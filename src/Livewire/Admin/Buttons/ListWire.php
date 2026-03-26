@@ -34,7 +34,7 @@ class ListWire extends Component
     {
         return [
             "title" => ["required", "string", "max:50"],
-            "link" => ["nullable", "url", "max:255"],
+            "link" => ["nullable", "string", "max:255"],
             "event" => ["nullable", "string", "max:255"],
             "color" => ["nullable", "string", "max:255"],
         ];
