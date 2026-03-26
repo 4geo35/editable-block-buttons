@@ -9,7 +9,8 @@
                 </a>
             @elseif ($button->event)
                 <button type="button"
-                        x-data @click.stop="$dispatch('show-request-form', {})"
+                        x-data
+                        @click.stop="$dispatch('show-request-form', { key: '{{ $button->event }}', place : 'Кнопка {{ htmlspecialchars($button->title) }} в Блоке {{ htmlspecialchars($blockItem->block->render_title ? $blockItem->block->render_title : $blockItem->block->title) }}, {{ htmlspecialchars($blockItem->title) }}'})"
                         class="btn {{ $btnClass }} w-full xs:w-auto mb-indent-xs xs:mr-indent-half">
                     {{ $button->title }}
                 </button>
