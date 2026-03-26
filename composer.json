@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "4geo35/editable-blocks": "@dev"
+        "4geo35/editable-blocks": "^1.2"
     },
     "autoload": {
         "psr-4": {
