@@ -58,7 +58,7 @@ class ListWire extends Component
 
     public function render(): View
     {
-        $buttons = $this->blockItem->orderedBtns;
+        $buttons = $this->blockItem->orderedButtons;
         return view("ebtns::livewire.admin.buttons.list-wire", compact("buttons"));
     }
 
