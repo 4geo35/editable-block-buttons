@@ -1,0 +1,27 @@
+{
+    "name": "4geo35/editable-block-buttons",
+    "description": "Additional buttons for blocks",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir",
+            "email": "aweram-team@yandex.ru"
+        }
+    ],
+    "require": {
+        "4geo35/editable-blocks": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "GIS\\EditableBlockButtons\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GIS\\EditableBlockButtons\\EditableBlockButtonsServiceProvider"
+            ]
+        }
+    }
+}
