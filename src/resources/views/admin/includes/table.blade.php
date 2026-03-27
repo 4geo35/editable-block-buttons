@@ -38,7 +38,7 @@
                         Вызов формы "{{ ! empty($formList[$item->event]) ? $formList[$item->event] : "Неизвестно" }}"
                     @endif
                 </td>
-                <td>{{ $item->is_outline ? "Есть" : "Нет" }}</td>
+                <td>{{ $item->is_outline ? "Нет" : "Есть" }}</td>
                 <td>
                     <div class="flex justify-center">
                         <button type="button" class="btn btn-sm btn-dark px-btn-x-ico rounded-e-none"

@@ -148,7 +148,7 @@ class ListWire extends Component
     {
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("delete", $model)) { return; }
+        if (! $this->checkAuth("delete", true)) { return; }
 
         try {
             $model->delete();

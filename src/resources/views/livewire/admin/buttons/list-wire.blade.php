@@ -12,8 +12,8 @@
                 </button>
             @endcan
         </div>
-        <x-tt::notifications.error prefix="block-buttons-{{ $blockItem->id }}" />
-        <x-tt::notifications.success prefix="block-buttons-{{ $blockItem->id }}" />
+        <x-tt::notifications.error prefix="block-buttons-{{ $blockItem->id }}-" />
+        <x-tt::notifications.success prefix="block-buttons-{{ $blockItem->id }}-" />
     </div>
 
     @include("ebtns::admin.includes.table")
