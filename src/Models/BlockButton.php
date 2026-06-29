@@ -3,9 +3,8 @@
 namespace GIS\EditableBlockButtons\Models;
 
 use GIS\EditableBlockButtons\Interfaces\BlockButtonModelInterface;
-use GIS\EditableBlocks\Models\BlockItem;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class BlockButton extends Model implements BlockButtonModelInterface
 {
@@ -17,9 +16,8 @@ class BlockButton extends Model implements BlockButtonModelInterface
         "color",
     ];
 
-    public function item(): BelongsTo
+    public function buttonable(): MorphTo
     {
-        $blockItemModelClass = config("editable-blocks.customBlockItemModel") ?? BlockItem::class;
-        return $this->belongsTo($blockItemModelClass, "item_id");
+        return $this->morphTo();
     }
 }
