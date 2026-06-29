@@ -13,18 +13,16 @@
             <tr>
                 <td>
                     <div class="flex justify-start">
-                        @can("update", $block)
-                            <button type="button" class="btn btn-sm btn-primary px-btn-x-ico rounded-e-none"
-                                    @if ($loop->last) disabled @else wire:loading.attr="disabled" @endif
-                                    wire:click="moveDown({{ $item->id }})">
-                                <x-tt::ico.line-arrow-bottom width="18" height="18" />
-                            </button>
-                            <button type="button" class="btn btn-sm btn-primary px-btn-x-ico rounded-s-none"
-                                    @if ($loop->first) disabled @else wire:loading.attr="disabled" @endif
-                                    wire:click="moveUp({{ $item->id }})">
-                                <x-tt::ico.line-arrow-top width="18" height="18" />
-                            </button>
-                        @endcan
+                        <button type="button" class="btn btn-sm btn-primary px-btn-x-ico rounded-e-none"
+                                @if ($loop->last) disabled @else wire:loading.attr="disabled" @endif
+                                wire:click="moveDown({{ $item->id }})">
+                            <x-tt::ico.line-arrow-bottom width="18" height="18" />
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary px-btn-x-ico rounded-s-none"
+                                @if ($loop->first) disabled @else wire:loading.attr="disabled" @endif
+                                wire:click="moveUp({{ $item->id }})">
+                            <x-tt::ico.line-arrow-top width="18" height="18" />
+                        </button>
                     </div>
                 </td>
                 <td>{{ $item->title }}</td>
@@ -42,16 +40,12 @@
                 <td>
                     <div class="flex justify-center">
                         <button type="button" class="btn btn-sm btn-dark px-btn-x-ico rounded-e-none"
-                                @cannot("update", $block) disabled
-                                @else wire:loading.attr="disabled"
-                                @endcannot
+                                wire:loading.attr="disabled"
                                 wire:click="showEdit({{ $item->id }})">
                             <x-tt::ico.edit/>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger px-btn-x-ico rounded-s-none"
-                                @cannot("update", $block) disabled
-                                @else wire:loading.attr="disabled"
-                                @endcannot
+                                wire:loading.attr="disabled"
                                 wire:click="showDelete({{ $item->id }})">
                             <x-tt::ico.trash/>
                         </button>

@@ -3,19 +3,14 @@
 namespace GIS\EditableBlockButtons\Livewire\Admin\Buttons;
 
 use GIS\EditableBlockButtons\Interfaces\BlockButtonModelInterface;
+use GIS\EditableBlockButtons\Interfaces\ShouldButtonsInterface;
 use GIS\EditableBlockButtons\Models\BlockButton;
-use GIS\EditableBlocks\Interfaces\BlockItemModelInterface;
-use GIS\EditableBlocks\Interfaces\BlockModelInterface;
-use GIS\EditableBlocks\Traits\CheckBlockAuthTrait;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class ListWire extends Component
 {
-    use CheckBlockAuthTrait;
-
-    public BlockItemModelInterface $blockItem;
-    public BlockModelInterface $block;
+    public ShouldButtonsInterface $blockItem;
 
     public array $formList = [];
 
@@ -52,7 +47,6 @@ class ListWire extends Component
 
     public function mount(): void
     {
-        $this->block = $this->blockItem->block;
         $this->formList = config("editable-block-buttons.forms");
     }
 
@@ -71,13 +65,11 @@ class ListWire extends Component
     public function showCreate(): void
     {
         $this->resetFields();
-        if (! $this->checkAuth("create")) { return; }
         $this->displayData = true;
     }
 
     public function store(): void
     {
-        if (! $this->checkAuth("create")) { return; }
         $this->validate();
 
         $this->blockItem->buttons()->create([
@@ -98,7 +90,6 @@ class ListWire extends Component
         $this->btnId = $modelId;
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("update", true)) { return; }
 
         $this->title = $model->title;
         $this->link = $model->link;
@@ -113,7 +104,6 @@ class ListWire extends Component
     {
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("update", true)) { return; }
         $this->validate();
 
         $model->update([
@@ -140,7 +130,6 @@ class ListWire extends Component
         $this->btnId = $modelId;
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("delete", true)) { return; }
         $this->displayDelete = true;
     }
 
@@ -148,7 +137,6 @@ class ListWire extends Component
     {
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("delete", true)) { return; }
 
         try {
             $model->delete();
@@ -167,7 +155,6 @@ class ListWire extends Component
         $this->btnId = $btnId;
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("update", true)) { return; }
 
         $previous = $this->blockItem->buttons()
             ->where("priority", "<", $model->priority)
@@ -182,7 +169,6 @@ class ListWire extends Component
         $this->btnId = $btnId;
         $model = $this->findModel();
         if (! $model) { return; }
-        if (! $this->checkAuth("update", true)) { return; }
 
         $previous = $this->blockItem->buttons()
             ->where("priority", ">", $model->priority)
