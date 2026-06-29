@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "4geo35/editable-blocks": "^v1.3"
+        "4geo35/tailwindcss-theme": "^1.3",
+        "4geo35/user-management": "^1.1"
     },
     "autoload": {
         "psr-4": {
