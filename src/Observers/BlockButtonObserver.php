@@ -21,16 +21,16 @@ class BlockButtonObserver
 
     public function created(BlockButtonModelInterface $button): void
     {
-        $button->buttonable()->touch;
+        $button->buttonable->touch();
     }
 
     public function updated(BlockButtonModelInterface $button): void
     {
-        $button->buttonable()->touch;
+        $button->buttonable->touch();
     }
 
     public function deleted(BlockButtonModelInterface $button): void
     {
-        $button->buttonable()->touch;
+        $button->buttonable->touch();
     }
 }
