@@ -11,6 +11,7 @@ use Livewire\Component;
 class ListWire extends Component
 {
     public ShouldButtonsInterface $blockItem;
+    public bool $useCardCover = false;
 
     public array $formList = [];
 
