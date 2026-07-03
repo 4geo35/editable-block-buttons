@@ -20,4 +20,17 @@ class BlockButton extends Model implements BlockButtonModelInterface
     {
         return $this->morphTo();
     }
+
+    public function getDispatchPlaceAttribute(): string
+    {
+        $array = [
+            "Кнопка",
+            htmlspecialchars($this->title)
+        ];
+        $parent = $this->buttonable;
+        if ($parent && ! empty($parent->title)) {
+            $array[] = "прикрепленная к {$parent->title}";
+        }
+        return implode(' ', $array);
+    }
 }

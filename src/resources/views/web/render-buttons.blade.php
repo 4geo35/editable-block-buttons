@@ -8,15 +8,9 @@
                     {{ $button->title }}
                 </a>
             @elseif ($button->event)
-                @php
-                    $parent = $button->buttonable;
-                    if ($parent && ! empty($parent->title)) {
-                        $title = "прикрепленная к {$parent->title}";
-                    } else { $title = ""; }
-                @endphp
                 <button type="button"
                         x-data
-                        @click.stop="$dispatch('show-request-form', { key: '{{ $button->event }}', place : 'Кнопка {{ htmlspecialchars($button->title) }}'}) {{ htmlspecialchars($title) }}"
+                        @click.stop="$dispatch('show-request-form', { key: '{{ $button->event }}', place : '{{ $button->dispatch_title }}' })"
                         class="btn {{ $btnClass }} w-full xs:w-auto mb-indent-xs xs:mr-indent-half">
                     {{ $button->title }}
                 </button>
