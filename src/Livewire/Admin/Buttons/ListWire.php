@@ -14,6 +14,7 @@ class ListWire extends Component
     public bool $useCardCover = false;
 
     public array $formList = [];
+    public string $idHash = "";
 
     public bool $displayData = false;
     public bool $displayDelete = false;
@@ -49,6 +50,7 @@ class ListWire extends Component
     public function mount(): void
     {
         $this->formList = config("editable-block-buttons.forms");
+        $this->idHash = md5($this->blockItem->id . $this->blockItem->table . rand(1000, 9999));
     }
 
     public function render(): View

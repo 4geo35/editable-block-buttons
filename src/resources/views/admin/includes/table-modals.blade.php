@@ -7,13 +7,13 @@
     <x-slot name="title">{{ $btnId ? "Редактировать" : "Добавить" }} кнопку</x-slot>
     <x-slot name="content">
         <form wire:submit.prevent="{{ $btnId ? 'update' : 'store' }}" class="space-y-indent-half"
-              id="blockButtonsDataForm-{{ $blockItem->id }}">
+              id="blockButtonsDataForm-{{ $idHash }}">
 
             <div>
-                <label for="blockButtonsTitle-{{ $blockItem->id }}" class="inline-block mb-2">
+                <label for="blockButtonsTitle-{{ $idHash }}" class="inline-block mb-2">
                     Заголовок<span class="text-danger">*</span>
                 </label>
-                <input type="text" id="blockButtonsTitle-{{ $blockItem->id }}"
+                <input type="text" id="blockButtonsTitle-{{ $idHash }}"
                        class="form-control {{ $errors->has("title") ? "border-danger" : "" }}"
                        required
                        wire:loading.attr="disabled"
@@ -22,10 +22,10 @@
             </div>
 
             <div>
-                <label for="blockButtonsLink-{{ $blockItem->id }}" class="inline-block mb-2">
+                <label for="blockButtonsLink-{{ $idHash }}" class="inline-block mb-2">
                     Ссылка
                 </label>
-                <input type="text" id="blockButtonsLink-{{ $blockItem->id }}"
+                <input type="text" id="blockButtonsLink-{{ $idHash }}"
                        class="form-control {{ $errors->has("link") ? "border-danger" : "" }}"
                        wire:loading.attr="disabled"
                        wire:model="link">
@@ -48,9 +48,9 @@
             @endif
 
             <div class="form-check">
-                <input type="checkbox" wire:model="isOutline" id="blockButtonsIsOutline-{{ $blockItem->id }}"
+                <input type="checkbox" wire:model="isOutline" id="blockButtonsIsOutline-{{ $idHash }}"
                        class="form-check-input {{ $errors->has('isOutline') ? 'border-danger' : '' }}"/>
-                <label for="blockButtonsIsOutline-{{ $blockItem->id }}" class="form-check-label">
+                <label for="blockButtonsIsOutline-{{ $idHash }}" class="form-check-label">
                     Кнопка без фона
                 </label>
             </div>
@@ -59,7 +59,7 @@
                 <button type="button" class="btn btn-outline-dark" wire:click="closeData">
                     Отмена
                 </button>
-                <button type="submit" form="blockButtonsDataForm-{{ $blockItem->id }}" class="btn btn-primary"
+                <button type="submit" form="blockButtonsDataForm-{{ $idHash }}" class="btn btn-primary"
                         wire:loading.attr="disabled">
                     {{ $btnId ? "Обновить" : "Добавить" }}
                 </button>
